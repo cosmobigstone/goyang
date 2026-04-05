@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Serif KR', serif;
+    background: #f5f2ec;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fdfaf5;
+    border: 1px solid #d8d0c0;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    padding: 3.5rem 4rem;
+    position: relative;
+  }
+
+  .page::before {
+    content: '';
+    display: block;
+    height: 6px;
+    background: linear-gradient(90deg, #c0392b, #8b0000);
+    position: absolute;
+    top: 0; left: 0; right: 0;
+  }
+
+  .stamp-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.2rem;
+  }
+
+  .stamp {
+    border: 2px solid #8b0000;
+    color: #8b0000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .date-line {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.78rem;
+    color: #666;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .doc-type {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: #8b0000;
+    margin-bottom: 1.2rem;
+  }
+
+  .main-title {
+    font-size: 1.55rem;
+    font-weight: 900;
+    line-height: 1.55;
+    color: #0d0d0d;
+    margin-bottom: 0.5rem;
+    word-break: keep-all;
+  }
+
+  .sub-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.88rem;
+    color: #555;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1.5px solid #1a1a1a;
+    margin: 1.6rem 0;
+  }
+
+  .divider-thin {
+    border: none;
+    border-top: 1px solid #d8d0c0;
+    margin: 1.8rem 0;
+  }
+
+  .lead {
+    font-size: 1.01rem;
+    line-height: 2.0;
+    color: #1a1a1a;
+    margin-bottom: 1.4rem;
+    word-break: keep-all;
+    text-align: justify;
+  }
+
+  .lead strong {
+    font-weight: 700;
+    color: #8b0000;
+  }
+
+  .section-heading {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #0d0d0d;
+    margin: 2.2rem 0 0.9rem;
+    padding-left: 0.9rem;
+    border-left: 4px solid #8b0000;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+
+  .body-text {
+    font-size: 0.96rem;
+    line-height: 2.05;
+    color: #222;
+    margin-bottom: 1rem;
+    word-break: keep-all;
+    text-align: justify;
+  }
+
+  .body-text strong {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .body-text em {
+    font-style: normal;
+    background: linear-gradient(transparent 60%, #f9e4e4 60%);
+    padding: 0 2px;
+  }
+
+  .demand-box {
+    background: #f9f5ef;
+    border: 1px solid #d0c8b8;
+    border-left: 4px solid #8b0000;
+    padding: 1.2rem 1.4rem;
+    margin: 1.6rem 0;
+  }
+
+  .demand-box .demand-title {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #8b0000;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+  }
+
+  .demand-box .body-text {
+    margin-bottom: 0;
+  }
+
+  .closing {
+    font-size: 0.96rem;
+    line-height: 2.0;
+    color: #222;
+    margin-top: 1.2rem;
+    word-break: keep-all;
+    text-align: justify;
+  }
+
+  .closing strong {
+    color: #8b0000;
+    font-weight: 700;
+  }
+
+  .signature-block {
+    margin-top: 2.8rem;
+    text-align: center;
+  }
+
+  .sig-date {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.88rem;
+    color: #444;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .sig-from {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.82rem;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 0.4rem;
+    word-break: keep-all;
+  }
+
+  .sig-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0d0d0d;
+    margin-top: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-note {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.74rem;
+    color: #888;
+    margin-top: 2.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid #d8d0c0;
+    line-height: 1.8;
+    word-break: keep-all;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 2rem 1.4rem; }
+    .main-title { font-size: 1.2rem; }
+    .section-heading { font-size: 0.92rem; }
+    .body-text, .lead { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="stamp-area">
+    <div class="stamp">성 명 서</div>
+  </div>
+
+  <div class="date-line">2026년 4월 6일</div>
+  <div class="doc-type">고양시민단체 및 애국 고양시민 일동</div>
+
+  <h1 class="main-title">국민의힘 경기도당과 고양 당협위원장들의<br>기초의원 공천을 강력히 규탄한다</h1>
+  <p class="sub-title">— 공정과 상식을 짓밟는 사천(私薦) 행태의 즉각 시정을 촉구한다</p>
+
+  <hr class="divider">
+
+  <p class="lead">
+    지방자치는 주민의 뜻을 직접 구현하는 풀뿌리 민주주의의 핵심이다. 그런데 지금 고양시에서 진행되는 국민의힘 기초의원 공천 과정은 민심과는 거리가 멀다. <strong>일부 당협위원장들의 개인적 욕심과 권력 남용에 의한 '사천(私薦)'이 공공연하게 이루어지고 있다는 의혹</strong>이 걷잡을 수 없이 퍼지고 있기 때문이다. 국민의힘을 진심으로 지지해 온 고양시의 시민단체 대표와 뜻있는 개인들은, 더 이상 이 현실을 외면할 수 없다는 판단 아래 이 성명을 발표한다. 다가오는 6월 지방선거에서 막강한 민주당 다수를 제대로 견제하려면 국민의힘 고양 조직은 먼저 스스로를 바로 세워야 한다. 공정하고 능력 있는 후보를 세워야만 유권자의 신뢰를 얻을 수 있다는 것은 너무도 자명한 이치다.
+  </p>
+
+  <hr class="divider-thin">
+
+  <div class="section-heading">'수족 공천', '노예 공천' — 민주주의를 배신하는 행위를 중단하라</div>
+
+  <p class="body-text">
+    현재 고양시 일부 선거구에서 이른바 '1인 접수'가 속출하고 있다. 이는 공천이 이미 각본대로 진행되고 있다는 방증이며, 결국 당협위원장들이 자신의 입맛에 맞는 인물만을 후보로 내세우는 '<em>수족 공천</em>'의 전형이다. 공천권을 사유화해 지방의원을 자신의 수족으로 삼으려는 오만함이 실재한다면, 그것은 정당 민주주의를 내부에서 무너뜨리는 행위다. 특정 지원자에게 "당신은 공천을 줄 수 없다"는 식의 <em>협박과 회유를 자행한 당협위원장</em>이 있다면 반드시 색출하여 엄정히 징계해야 한다. 이는 헌법이 보장하는 기본권을 침해하는 행위로, 필요하다면 법적 처벌도 피할 수 없다. 분명히 해 두건대, 당협위원장의 역할은 공정한 경쟁 환경을 조성하는 것뿐이다. 후보를 결정하거나 조정할 권한은 당이 부여한 바가 없다.
+  </p>
+
+  <hr class="divider-thin">
+
+  <div class="section-heading">'가'번 집착과 무능한 기득권 — 시민 대표 자격을 스스로 포기하지 말라</div>
+
+  <p class="body-text">
+    제1야당의 자존심을 내팽개치고 오직 당선 가능성만을 쫓아 기초의원 '<em>가</em>'번에 목을 매는 행태는 시민 대표로서의 자격을 스스로 부정하는 것과 다름없다. 이미 다수의 현직 도의원이 무책임하게 출마를 회피한 상태이다. 기초의원들 또한 기득권을 지키는 데만 급급해 '<em>가</em>'번 확보에 매달리고, 이런 행태에 편승해 권력을 남용하는 당협위원장이 있다면 이는 반드시 고양시민의 엄중한 심판을 받게 될 것이다. 진정한 도전자는 불리한 환경에서도 시민에게 직접 호소할 각오를 갖추고 있어야 한다. 그런 각오 없이 공천 번호에만 기대는 후보가 과연 지역 주민을 위해 싸울 수 있겠는가.
+  </p>
+
+  <hr class="divider-thin">
+
+  <div class="section-heading">돌아가며 나눠먹는 비례대표 — 부패의 온상을 이제는 끝내야 한다</div>
+
+  <p class="body-text">
+    4개 당협이 오랫동안 순번을 정해 고양시의원 비례대표 후보 자리를 밀실에서 나눠온 구태는 더 이상 용납될 수 없다. 이 적폐의 결과는 이미 참담하게 드러났다. 4년 전 '정' 당협위원장의 비민주적 밀실 공천 강행은 지역 분열의 씨앗을 뿌렸고, 지난 총선에 이어 지금도 그 후유증이 지속되고 있으며 수사와 재판까지 남아 있는 상태다. 이제는 비례대표 선정을 고양시민에게 돌려줘야 한다. 공개 공모를 통해 다양한 인재가 경쟁하도록 하는 것이, 오히려 당의 외연을 넓히고 지지층을 확대하는 길이다. 비례대표는 소수를 위한 나눠먹기 자리가 아니라, 당의 가치를 가장 잘 대표하는 인물이 서야 하는 자리다.
+  </p>
+
+  <hr class="divider-thin">
+
+  <div class="section-heading">공천 심사 원점 재검토 — 도당과 당협위원장은 즉각 답하라</div>
+
+  <p class="body-text">
+    잘못된 공천 절차로 인해 유능한 후보들이 무소속 출마를 결심하는 일이 이어진다면, 그로 인한 보수 진영의 분열과 선거 패배의 책임은 온전히 당협위원장들과 경기도당에 있다. 김선교 도당위원장은 '<em>도당이나 당협위원장과 협의되지 않은 신청자는 컷오프한다</em>'는 협박성 소문의 진상을 시민 앞에 명확히 해명해야 한다. 수천억 원의 공공 예산으로 운용되는 지방자치를 일부 인사들의 권력 유지 수단으로 악용하는 일은 결코 없어야 한다. 민주당은 기초의회에서도 최소한의 경선을 보장하며 경쟁력을 키워 전 지역 최다 의석을 향해 전력을 다하고 있다. 국민의힘 고양 조직이 유능한 인재의 진입을 막고 당의 외연을 스스로 좁히는 행태를 지속한다면, 그 결과는 자명하다.
+  </p>
+
+  <hr class="divider-thin">
+
+  <div class="demand-box">
+    <div class="demand-title">우리의 요구</div>
+    <p class="body-text">
+      하나, 당협위원장 주도의 '수족 공천'·'노예 공천' 및 일체의 협박·회유를 즉각 중단하라.<br>
+      하나, '가'번 확보에만 급급한 무능한 기득권 후보를 배제하고 경쟁력 있는 인재를 공천하라.<br>
+      하나, 밀실 순번제 비례대표 선정 관행을 철폐하고 공개 공모 방식으로 전환하라.<br>
+      하나, 기초의원 공천 심사 전반을 원점에서 재검토하고 그 과정을 투명하게 공개하라.<br>
+      하나, 김선교 경기도당위원장은 불공정 공천 개입 의혹에 대해 즉각 공개 해명하라.
+    </p>
+  </div>
+
+  <p class="closing">
+    이상의 요구가 성실히 받아들여지지 않을 경우, 우리 고양시민 단체는 깨어있는 시민들과 연대하여 잘못된 공천의 실상을 적극 알리고, <strong>낙천·낙선 운동을 포함한 모든 합법적 수단을 총동원하여 강력히 투쟁할 것</strong>을 여기에 분명히 천명한다. 고양의 지방자치는 소수의 정치 권력이 아니라, 8만여 고양시민의 것이다.
+  </p>
+
+  <hr class="divider">
+
+  <div class="signature-block">
+    <div class="sig-date">2026년 4월 6일</div>
+    <div class="sig-from">
+      민주당의 다수 횡포를 염려하고 국민의힘을 지지하는<br>
+      고양시를 사랑하는 시민단체 및 애국 고양시민 일동
+    </div>
+    <div class="sig-name">서명 단체 및 개인 일동</div>
+  </div>
+
+  <p class="footer-note">
+    ※ 본 성명서는 동참 시민단체 및 개인 명의로 보도자료 배포 및 실천행동과 함께 발표됩니다.<br>
+    ※ 국민의힘 경기도당, 고양 4개 당협위원장, 관련 언론 및 시민사회에 공개 송부합니다.
+  </p>
+
+</div>
+</body>
+</html>
